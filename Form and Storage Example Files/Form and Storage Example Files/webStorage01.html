@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 5 Web Storage</title>
+
+<link href="reset.css" type="text/css" rel="stylesheet" />
+
+<link href="webStorage_Style.css" type="text/css" rel="stylesheet" />
+
+<script>
+window.addEventListener("load",init);
+
+function init(){
+	if(typeof(Storage)!=="undefined"){
+	
+	display();
+	
+	var button=document.getElementById("button");
+	button.addEventListener("click",saveInfo);
+	}
+	
+	else{
+	//old bowser	
+	}
+}
+
+function saveInfo(){
+    //here i set variables to hold the values that the user defines in the form elements
+	var favDonut=document.getElementById("FavDonut").value;
+	var reasoning1=document.getElementById("Reasoning").value;
+    var leastFavDonut=document.getElementById("LeastFavDonut").value;
+    var reasoning2=document.getElementById("Reasoning2").value;
+	
+    //below i set the variables' values into local storage items where i can then call them later in my display function
+	localStorage.setItem("favoriteDonut",favDonut);
+	localStorage.setItem("userReasoning1",reasoning1);
+    localStorage.setItem("leastFavoriteDonut",leastFavDonut);
+    localStorage.setItem("userReasoning2",reasoning2);
+	
+	
+	display();
+	
+}
+
+function display(){
+    //declaration of variables I will be using in my display function, my variables are populated by values i get from the local storage
+	var rightBox=document.getElementById("useroutput");
+	var userFavoriteDonut=localStorage.getItem("favoriteDonut");
+	var theReasoning1=localStorage.getItem("userReasoning1");
+    var userLeastFavoriteDonut=localStorage.getItem("leastFavoriteDonut");
+    var theReasoning2=localStorage.getItem("userReasoning2");
+	//these statements below check to see if my text areas are undefined and if they are the innerHTML of the output window will be set to "", if none are undefined then it will set the output window to display all the information collected
+	if(theReasoning1==undefined){
+		document.getElementById("useroutput").innerHTML="";
+	} else if(theReasoning2 == undefined){
+        document.getElementById("useroutput").innerHTML="";
+    }
+	else{ document.getElementById("useroutput").innerHTML="OUTPUT  <hr /><br /><br />Favorite Donut: "+userFavoriteDonut+"<br /><br />  Because: "+theReasoning1+"<br /><br />  Least Favorite Donut: "+userLeastFavoriteDonut+"<br /><br />  Because: "+theReasoning2;
+	}
+	
+}
+
+</script>
+
+
+
+</head>
+
+<body>
+    <div id="banner">Donut Questionaire!!!</div>
+<div id="main">
+	<section id="userinput">
+    INPUT <br>
+	<hr />
+    <br /><br />
+    <form>
+    
+    <div>Favorite Donut: <br /><input type="input" id="FavDonut" size="20"></div>
+    <br />
+    <div>Why is it your favorite?<br /> <textarea id="Reasoning" rows="10"></textarea></div>
+    <br />
+    <div>Least Favorite Donut: <br /><input type="input" id="LeastFavDonut" size ="20"></div>
+    <br />
+    <div>Why is it your least favorite?<br /> <textarea id="Reasoning2" rows="10"></textarea></div>
+        
+    <div><input type="button" id="button" value="Save"></div>
+    
+    </form>
+    </section>
+    
+    
+    <section id="useroutput">
+ OUTPUT  
+ 	<hr />
+    <br /><br />
+    </section>
+
+</div>
+
+
+
+</body>
+</html>

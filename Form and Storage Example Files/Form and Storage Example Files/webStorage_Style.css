@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#main{
+width:750px; height:500px;
+margin:0 auto;	
+}
+#userinput{
+	float:left;
+	margin-top:25px;
+	padding:20px;
+	background-color:#999966;
+	width:300px; height:550px;
+	}
+
+
+#useroutput{
+	float:left;
+	margin-top:25px;
+	margin-left:20px;
+	padding:20px;
+	width:300px; height:550px;
+	background-color:#CCCCCC;
+	
+	}
+#banner{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 45px;
+    margin: auto;
+    position: relative;
+    right: 20px;
+    top:10px;
+    background-image: url(images/donut-banner-EDIT.jpg);
+    background-repeat: no-repeat;
+    background-size: 500px 100px;;
+    width: 500px;
+    height:80px;
+}
+
